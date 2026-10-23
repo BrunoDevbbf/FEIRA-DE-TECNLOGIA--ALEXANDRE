@@ -76,8 +76,11 @@ h1,h2,h3{margin:0;line-height:1.1}
 .chrome i{width:9px;height:9px;border-radius:50%;background:var(--line)}
 .chrome i:first-child{background:var(--pink)}
 .chrome span{margin-left:8px;flex:1;font-size:.72rem;color:var(--muted);background:var(--bg);border-radius:99px;padding:2px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cover{height:110px;display:grid;place-items:center;font-size:3rem;position:relative}
-.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,var(--card))}
+.cover{height:190px;display:block;position:relative;overflow:hidden;background:var(--bg2)}
+.cover iframe{display:block;width:100%;height:100%;border:0;background:#fff}
+.cover .preview-fallback{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px;text-align:center;color:var(--muted);font-size:.82rem}
+.cover .preview-fallback strong{color:var(--cyan);font-size:.95rem}
+.cover::after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(transparent,var(--card));pointer-events:none}
 .body{padding:4px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
 .cat{align-self:flex-start;font-size:.75rem;color:var(--cyan);border:1px solid var(--cyan);border-radius:6px;padding:1px 8px}
 .card h3{font-size:1.3rem;font-weight:700}
@@ -126,21 +129,431 @@ footer{border-top:1px solid var(--line);padding:22px 0 32px;color:var(--muted);f
 
 <script>
 /* ============ EDITE AQUI: um bloco por projeto ============
-   titulo, alunos (todos que fizeram o site), turma, categoria, descricao, url, emoji, cor
-   Deixe url vazio ("") para mostrar "Em breve". */
+   titulo, alunos, turma, categoria, descricao, url, htmlPreview e cor.
+   Cole o código HTML de cada prévia dentro de crases em htmlPreview. */
 const PROJETOS = [
   {titulo:"Nexa Design Studio", alunos:["Nicolas Claro"], turma:"2º", categoria:"Site pessoal",
-   descricao:"Transformando ideias em projetos profissionais.", url:"https://nexa-design-studio.vercel.app/", emoji:"<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><meta name="generator" content="Aspose.Words for .NET 26.9.0" /><title></title><style type="text/css">body { font-family:'Times New Roman'; font-size:12pt }p { margin:0pt }</style></head><body><div><p style="margin-top:30.2pt; text-align:justify; line-height:12.2pt"><span style="font-family:Calibri; font-size:10pt">.</span><span style="font-family:Calibri; font-size:10pt; letter-spacing:28pt"> </span><span style="font-family:Calibri; font-size:10pt">seT)lS%lo</span><span style="font-family:Calibri; font-size:10pt; letter-spacing:317.15pt"> </span><span style="font-family:Calibri; font-size:10pt">Serviços</span><span style="font-family:Calibri; font-size:10pt; letter-spacing:26.15pt"> </span><span style="font-family:Calibri; font-size:10pt">Ver</span><span style="font-family:Calibri; font-size:10pt; letter-spacing:1.7pt"> </span><span style="font-family:Calibri; font-size:10pt">detalhes</span><span style="font-family:Calibri; font-size:10pt; letter-spacing:26.55pt"> </span><span style="font-family:Calibri; font-size:10pt">Portfólio</span><span style="font-family:Calibri; font-size:10pt; letter-spacing:26.4pt"> </span><span style="font-family:Calibri; font-size:10pt">Sobre</span><span style="font-family:Calibri; font-size:10pt; letter-spacing:24.55pt"> </span><span style="font-family:Calibri; font-size:10pt">Preços</span><span style="font-family:Calibri; font-size:10pt; letter-spacing:24.05pt"> </span><span style="font-family:Calibri; font-size:10pt">—</span></p><p style="margin-top:149.85pt; margin-left:0.5pt; text-align:justify; line-height:51.1pt"><span style="font-family:Calibri; font-size:31pt">Transformando</span><span style="font-family:Calibri; font-size:11pt">NEXA</span><span style="font-family:Calibri; font-size:11pt; letter-spacing:2.85pt"> </span><span style="font-family:Calibri; font-size:11pt">DESIGN</span><span style="font-family:Calibri; font-size:11pt; letter-spacing:4.15pt"> </span><span style="font-family:Calibri; font-size:11pt">STUDIO</span><span style="font-family:Calibri; font-size:31pt; letter-spacing:154.5pt"> </span><span style="font-family:Calibri; font-size:31pt">ideias</span></p><p style="margin-top:5.25pt; margin-right:44.1pt; margin-left:1.45pt; line-height:51pt"><span style="font-family:Calibri; font-size:31pt">em</span><span style="font-family:Calibri; font-size:31pt; letter-spacing:15.45pt"> </span><span style="font-family:Calibri; font-size:31pt">projetos</span><span style="font-family:Calibri; font-size:51pt; letter-spacing:359.15pt"> </span><span style="font-family:Calibri; font-size:51pt">X</span><span style="font-family:Calibri; font-size:51pt; letter-spacing:10.45pt"> </span><span style="font-family:Calibri; font-size:51pt">NEXA </span><span style="font-family:Calibri; font-size:31pt">profissionais.</span></p><p style="margin-top:12.6pt; margin-left:588.4pt; text-align:justify; line-height:15.85pt"><span style="font-family:Calibri; font-size:13pt">—</span><span style="font-family:Calibri; font-size:13pt; letter-spacing:4.85pt"> </span><span style="font-family:Calibri; font-size:13pt">D/ES-I</span><span style="font-family:Calibri; font-size:13pt; letter-spacing:1.2pt"> </span><span style="font-family:Calibri; font-size:13pt">GN</span><span style="font-family:Calibri; font-size:13pt; letter-spacing:7.4pt"> </span><span style="font-family:Calibri; font-size:13pt">S</span><span style="font-family:Calibri; font-size:13pt; letter-spacing:2.85pt"> </span><span style="font-family:Calibri; font-size:13pt">TA</span><span style="font-family:Calibri; font-size:13pt; letter-spacing:4.25pt"> </span><span style="font-family:Calibri; font-size:13pt">RLA</span><span style="font-family:Calibri; font-size:13pt; letter-spacing:6.85pt"> </span><span style="font-family:Calibri; font-size:13pt">=</span></p><p style="margin-top:7.55pt; margin-left:1.45pt; text-align:justify; line-height:13.45pt"><span style="font-family:Calibri; font-size:11pt">Design,</span><span style="font-family:Calibri; font-size:11pt; letter-spacing:5.35pt"> </span><span style="font-family:Calibri; font-size:11pt">apresentações,</span><span style="font-family:Calibri; font-size:11pt; letter-spacing:10.45pt"> </span><span style="font-family:Calibri; font-size:11pt">planilhas</span><span style="font-family:Calibri; font-size:11pt; letter-spacing:6.2pt"> </span><span style="font-family:Calibri; font-size:11pt">e</span><span style="font-family:Calibri; font-size:11pt; letter-spacing:1.35pt"> </span><span style="font-family:Calibri; font-size:11pt">sites</span><span style="font-family:Calibri; font-size:11pt; letter-spacing:3.15pt"> </span><span style="font-family:Calibri; font-size:11pt">feitos</span><span style="font-family:Calibri; font-size:11pt; letter-spacing:4.7pt"> </span><span style="font-family:Calibri; font-size:11pt">com</span><span style="font-family:Calibri; font-size:11pt; letter-spacing:3.25pt"> </span><span style="font-family:Calibri; font-size:11pt">cuidado</span></p><p style="margin-top:6.65pt; margin-left:1pt; text-align:justify; line-height:14.65pt"><span style="font-family:Calibri">e</span><span style="font-family:Calibri; letter-spacing:0.6pt"> </span><span style="font-family:Calibri">atenção</span><span style="font-family:Calibri; letter-spacing:2.65pt"> </span><span style="font-family:Calibri">para</span><span style="font-family:Calibri; letter-spacing:1.25pt"> </span><span style="font-family:Calibri">quem</span><span style="font-family:Calibri; letter-spacing:1.9pt"> </span><span style="font-family:Calibri">quer</span><span style="font-family:Calibri; letter-spacing:1.95pt"> </span><span style="font-family:Calibri">resultados</span><span style="font-family:Calibri; letter-spacing:2.6pt"> </span><span style="font-family:Calibri">de</span><span style="font-family:Calibri; letter-spacing:1.15pt"> </span><span style="font-family:Calibri">verdade.</span></p></div></body></html>", cor:"#2dff8a"},
+   descricao:"Transformando ideias em projetos profissionais.", url:"https://nexa-design-studio.vercel.app/", htmlPreview: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexa Design Studio — Transformando Ideias em Projetos Profissionais</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header id="header">
+    <nav class="nav-container">
+      <a href="#" class="logo">
+        <span class="logo-mark">N</span>
+        <span class="logo-text">exa <em>Studio</em></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="servicos.html">Serviços</a></li>
+        <li><a href="servicos.html">Ver detalhes</a></li>
+        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#precos">Preços</a></li>
+        <li><a href="#contato" class="nav-cta">Solicitar orçamento</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="servicos.html">Serviços</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#precos">Preços</a>
+      <a href="#contato">Solicitar orçamento</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="hero-tag">Nexa Design Studio</span>
+        <h1>Transformando ideias em projetos profissionais.</h1>
+        <p>Design, apresentações, planilhas e sites feitos com cuidado e atenção para quem quer resultados de verdade.</p>
+        <div class="hero-btns">
+          <a href="#contato" class="btn btn-primary">Solicitar orçamento</a>
+          <a href="#servicos" class="btn btn-outline">Ver serviços</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="logo_Nexa.png" alt="Design criativo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="servicos" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">O que fazemos</span>
+        <h2>Serviços</h2>
+        <p>Soluções sob medida para cada necessidade — do design visual ao desenvolvimento web.</p>
+      </div>
+      <div class="services-grid">
+
+        <a href="servicos.html#thumbnails" class="service-card">
+          <div class="sc-icon">🎨</div>
+          <h3>Thumbnails e Artes</h3>
+          <p>Criação de miniaturas para YouTube e artes para redes sociais com identidade visual marcante.</p>
+          <ul>
+            <li>Thumbnails para YouTube</li>
+            <li>Posts e stories</li>
+            <li>Artes personalizadas</li>
+          </ul>
+        </a>
+
+        <a href="servicos.html#slides" class="service-card">
+          <div class="sc-icon">📊</div>
+          <h3>Apresentações em Slides</h3>
+          <p>Slides profissionais e bem estruturados para trabalhos, seminários e reuniões empresariais.</p>
+          <ul>
+            <li>Trabalhos escolares e TCC</li>
+            <li>Seminários</li>
+            <li>Apresentações empresariais</li>
+          </ul>
+        </a>
+
+        <a href="servicos.html#excel" class="service-card">
+          <div class="sc-icon">📈</div>
+          <h3>Planilhas em Excel</h3>
+          <p>Planilhas organizadas e automatizadas para controle financeiro e análise de dados.</p>
+          <ul>
+            <li>Controle financeiro</li>
+            <li>Gráficos e dashboards</li>
+            <li>Tabelas automatizadas</li>
+          </ul>
+        </a>
+
+        <a href="servicos.html#sites" class="service-card">
+          <div class="sc-icon">💻</div>
+          <h3>Desenvolvimento de Sites</h3>
+          <p>Sites modernos, rápidos e responsivos para portfólios, negócios e landing pages.</p>
+          <ul>
+            <li>Landing pages</li>
+            <li>Portfólios</li>
+            <li>Sites empresariais</li>
+          </ul>
+        </a>
+        <div class="hero-btns">
+          <a href="servicos.html" class="btn btn-primary">Ver Serviços</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Portfólio</span>
+        <h2>Alguns trabalhos</h2>
+        <p>Exemplos do tipo de projeto que desenvolvemos.</p>
+      </div>
+      <div class="portfolio-filters">
+        <button class="pf-btn active" data-filter="all">Todos</button>
+        <button class="pf-btn" data-filter="thumb">Artes</button>
+        <button class="pf-btn" data-filter="slides">Slides</button>
+        <button class="pf-btn" data-filter="excel">Planilhas</button>
+        <button class="pf-btn" data-filter="web">Sites</button>
+      </div>
+      <div class="portfolio-grid" id="portfolioGrid">
+
+        <div class="portfolio-item" data-cat="thumb">
+          <img src="youtube_roupa.png" alt="Thumbnail YouTube" loading="lazy" />
+          <div class="pi-info">
+            <span>Arte / Thumbnail</span>
+            <h4>YouTube Gaming</h4>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-cat="slides">
+          <img src="slide_canva.png" alt="Apresentação" loading="lazy" />
+          <div class="pi-info">
+            <span>Slides</span>
+            <h4>Pitch Empresarial</h4>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-cat="web">
+          <img src="cardapio_site.png" alt="Site moderno" loading="lazy" />
+          <div class="pi-info">
+            <span>Site</span>
+            <h4>Landing Page</h4>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-cat="excel">
+          <img src="exel.png" alt="Planilha" loading="lazy" />
+          <div class="pi-info">
+            <span>Planilha</span>
+            <h4>Dashboard Financeiro</h4>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-cat="thumb">
+          <img src="tiktok_roupa.png" alt="Arte Social" loading="lazy" />
+          <div class="pi-info">
+            <span>Arte / Redes Sociais</span>
+            <h4>Pack Instagram</h4>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-cat="web">
+          <img src="codigo_site.png" alt="Portfólio" loading="lazy" />
+          <div class="pi-info">
+            <span>Site</span>
+            <h4>Portfólio Criativo</h4>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="sobre" class="section">
+    <div class="container">
+      <div class="about-layout">
+        <div class="about-img">
+          <img src="logotipo_Nexa.png" alt="Equipe trabalhando" loading="lazy" />
+        </div>
+        <div class="about-text">
+          <span class="section-tag">Sobre nós</span>
+          <h2>Quem somos</h2>
+          <p>A Nexa Design Studio é um estúdio criativo focado em soluções digitais de qualidade. Acreditamos que um bom design vai além da estética — ele resolve problemas e comunica de forma clara.</p>
+          <p>Trabalhamos com dedicação em cada projeto, cuidando dos detalhes do início ao fim. Nosso objetivo é entregar algo que você realmente use e que funcione.</p>
+          <div class="about-items">
+            <div class="about-item">
+              <strong>Qualidade</strong>
+              <p>Entregamos apenas o que nos orgulha assinar.</p>
+            </div>
+            <div class="about-item">
+              <strong>Prazo</strong>
+              <p>Compromisso com datas combinadas.</p>
+            </div>
+            <div class="about-item">
+              <strong>Suporte</strong>
+              <p>Acompanhamento próximo durante todo o projeto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="precos" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Preços</span>
+        <h2>Investimento</h2>
+        <p>Valores iniciais — o orçamento final é personalizado para o seu projeto.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <div class="price-card">
+          <div class="pc-icon">🎨</div>
+          <h3>Thumbnail / Arte</h3>
+          <div class="pc-price"><span>a partir de</span><strong>R$ 25</strong></div>
+          <ul>
+            <li>Arquivo em alta resolução</li>
+            <li>2 revisões inclusas</li>
+            <li>Entrega em até 24h</li>
+          </ul>
+          <a href="#contato" class="btn btn-outline">Solicitar</a>
+        </div>
+
+        <div class="price-card">
+          <div class="pc-icon">📊</div>
+          <h3>Apresentação</h3>
+          <div class="pc-price"><span>a partir de</span><strong>R$ 50</strong></div>
+          <ul>
+            <li>Design personalizado</li>
+            <li>Até 15 slides</li>
+            <li>3 revisões inclusas</li>
+          </ul>
+          <a href="#contato" class="btn btn-outline">Solicitar</a>
+        </div>
+
+        <div class="price-card price-highlight">
+          <div class="pc-badge">Mais pedido</div>
+          <div class="pc-icon">💻</div>
+          <h3>Site Profissional</h3>
+          <div class="pc-price"><span>a partir de</span><strong>R$ 350</strong></div>
+          <ul>
+            <li>Design responsivo exclusivo</li>
+            <li>Domínio + hospedagem</li>
+            <li>SEO básico</li>
+            <li>Suporte por 30 dias</li>
+          </ul>
+          <a href="#contato" class="btn btn-primary">Solicitar</a>
+        </div>
+
+        <div class="price-card">
+          <div class="pc-icon">📈</div>
+          <h3>Planilha Excel</h3>
+          <div class="pc-price"><span>a partir de</span><strong>R$ 45</strong></div>
+          <ul>
+            <li>Fórmulas personalizadas</li>
+            <li>Dashboard visual</li>
+            <li>2 revisões inclusas</li>
+          </ul>
+          <a href="#contato" class="btn btn-outline">Solicitar</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contato" class="section">
+    <div class="container">
+      <div class="contact-layout">
+        <div class="contact-info">
+          <span class="section-tag">Contato</span>
+          <h2>Vamos conversar?</h2>
+          <p>Conta pra gente o que você precisa. Respondemos em até 24 horas com uma proposta.</p>
+          <div class="contact-links">
+            <a href="https://wa.me/556993563596" class="contact-link contact-link-wpp" target="_blank" rel="noopener">
+              <div class="cl-icon wpp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <div class="cl-text">
+                <strong>WhatsApp</strong>
+                <span>(69) 9356-3596</span>
+              </div>
+              <div class="cl-arrow">→</div>
+            </a>
+            <a href="mailto:nicolasclaro899@gmail.com" class="contact-link contact-link-mail">
+              <div class="cl-icon mail">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="white" stroke-width="1.5"/><path d="M22 6l-10 7L2 6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div class="cl-text">
+                <strong>E-mail</strong>
+                <span>nicolasclaro899@gmail.com</span>
+              </div>
+              <div class="cl-arrow">→</div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="servico">Serviço</label>
+              <select id="servico" name="servico">
+                <option value="">Selecione um serviço</option>
+                <option>Thumbnail / Arte</option>
+                <option>Apresentação em Slides</option>
+                <option>Planilha em Excel</option>
+                <option>Desenvolvimento de Site</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="5" placeholder="Descreva seu projeto..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Enviar pelo WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-mark">N</span>
+            <span class="logo-text">exa <em>Studio</em></span>
+          </a>
+          <p>Design estratégico e tecnologia para transformar suas ideias em realidade.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Instagram" class="social-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://wa.me/556993563596" aria-label="WhatsApp" class="social-link" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="#servicos">Thumbnails e Artes</a></li>
+            <li><a href="#servicos">Apresentações em Slides</a></li>
+            <li><a href="#servicos">Planilhas em Excel</a></li>
+            <li><a href="#servicos">Desenvolvimento de Sites</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Páginas</h4>
+          <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#precos">Preços</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="mailto:contato@nexadesign.com.br">contato@nexadesign.com.br</a></li>
+            <li><a href="https://wa.me/556993563596" target="_blank">(69) 9356-3596</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Nexa Design Studio. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLUTUANTE -->
+  <a href="https://wa.me/556993563596" class="whatsapp-fab" target="_blank" aria-label="WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- VOLTAR AO TOPO -->
+  <button class="back-top" id="backTop" aria-label="Voltar ao topo">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 14V6M6 10l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
+`, cor:"#2dff8a"},
   {titulo:"Diário de Estudos", alunos:["Nicolas Claro", "Iago"], turma:"2º", categoria:"Loja virtual",
-   descricao:"Bem-vindo à nossa cafeteria, onde somos apaixonados por cafés de qualidade e pela preparação artesanal.", url:"https://brunodevbbf.github.io/SiteCafe/", emoji:"🛒", cor:"#4de3a0"},
+   descricao:"Bem-vindo à nossa cafeteria, onde somos apaixonados por cafés de qualidade e pela preparação artesanal.", url:"https://brunodevbbf.github.io/SiteCafe/", htmlPreview: ``, cor:"#4de3a0"},
   {titulo:"Quiz da Amazônia", alunos:["João Victor","Larissa Gomes","Davi Rocha"], turma:"8º B", categoria:"Jogo",
-   descricao:"Teste seus conhecimentos sobre a floresta e seus animais.", url:"", emoji:"🌳", cor:"#19c37d"},
+   descricao:"Teste seus conhecimentos sobre a floresta e seus animais.", url:"", htmlPreview: ``, cor:"#19c37d"},
   {titulo:"Banda do Bairro", alunos:["Sofia Martins"], turma:"1º Ano EM", categoria:"Site pessoal",
-   descricao:"Página de uma banda local com músicas, fotos e agenda de shows.", url:"", emoji:"🎸", cor:"#b6ff3b"},
+   descricao:"Página de uma banda local com músicas, fotos e agenda de shows.", url:"", htmlPreview: ``, cor:"#b6ff3b"},
   {titulo:"Calculadora de Notas", alunos:["Lucas Ferreira","Beatriz Alves"], turma:"1º Ano EM", categoria:"Ferramenta",
-   descricao:"Descubra quanto falta para passar de ano em cada matéria.", url:"", emoji:"🧮", cor:"#7dffd0"},
+   descricao:"Descubra quanto falta para passar de ano em cada matéria.", url:"", htmlPreview: ``, cor:"#7dffd0"},
   {titulo:"Jogo da Memória", alunos:["Rafael Costa"], turma:"8º B", categoria:"Jogo",
-   descricao:"Encontre os pares de símbolos de programação o mais rápido que puder.", url:"", emoji:"🧠", cor:"#e4ff6b"}
+   descricao:"Encontre os pares de símbolos de programação o mais rápido que puder.", url:"", htmlPreview: ``, cor:"#e4ff6b"}
 ];
 /* ========================================================== */
 
@@ -177,7 +590,11 @@ const corDe = n => cores[[...n].reduce((a,c) => a + c.charCodeAt(0), 0) % cores.
 $("#grid").innerHTML = PROJETOS.map(p => `
   <article class="card" data-cat="${esc(p.categoria)}">
     <div class="chrome"><i></i><i></i><i></i><span class="mono">${esc(p.url ? host(p.url) : "em-breve")}</span></div>
-    <div class="cover" style="background:linear-gradient(135deg,${esc(p.cor)}55,transparent)" aria-hidden="true">${p.emoji}</div>
+    <div class="cover" style="background:linear-gradient(135deg,${esc(p.cor)}33,transparent)">
+      ${p.htmlPreview && p.htmlPreview.trim()
+        ? `<iframe title="Prévia de ${esc(p.titulo)}" sandbox="allow-scripts" loading="lazy" referrerpolicy="no-referrer" srcdoc="${esc(p.htmlPreview)}"></iframe>`
+        : `<div class="preview-fallback"><strong>Espaço para prévia HTML</strong><span>Preencha o campo htmlPreview deste projeto.</span></div>`}
+    </div>
     <div class="body">
       <span class="cat mono">${esc(p.categoria)}</span>
       <h3>${esc(p.titulo)}</h3>
