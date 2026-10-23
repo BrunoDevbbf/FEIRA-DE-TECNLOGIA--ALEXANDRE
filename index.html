@@ -108,7 +108,7 @@ footer{border-top:1px solid var(--line);padding:22px 0 32px;color:var(--muted);f
     <h1>Escola Alexandre de Gusmão<em><span class="ghost">Feira de Informática</span><span class="typed tc" id="typed" aria-hidden="true"></span></em></h1>
     <p>Sites criados pelos nossos alunos. Toque em um projeto para visitar.</p>
     <div class="stats">
-      <div><b id="nProj">0</b><small>sites no ar</small></div>
+      <div><b id="nProj">0</b><small>sites com endereço publicado</small></div>
       <div><b id="nAlu">0</b><small>alunos criadores</small></div>
       <div><b id="nCat">0</b><small>categorias</small></div>
     </div>
@@ -129,16 +129,16 @@ footer{border-top:1px solid var(--line);padding:22px 0 32px;color:var(--muted);f
    titulo, alunos (todos que fizeram o site), turma, categoria, descricao, url, emoji, cor
    Deixe url vazio ("") para mostrar "Em breve". */
 const PROJETOS = [
-  {titulo:"Nexa Design Studio", aluno:["Nicolas Claro"], turma:"2º", categoria:"Site pessoal",
+  {titulo:"Nexa Design Studio", alunos:["Nicolas Claro"], turma:"2º", categoria:"Site pessoal",
    descricao:"Transformando ideias em projetos profissionais.", url:"https://nexa-design-studio.vercel.app/", emoji:"🛒", cor:"#2dff8a"},
   {titulo:"Diário de Estudos", alunos:["Nicolas Claro", "Iago"], turma:"2º", categoria:"Loja virtual",
    descricao:"Bem-vindo à nossa cafeteria, onde somos apaixonados por cafés de qualidade e pela preparação artesanal.", url:"https://brunodevbbf.github.io/SiteCafe/", emoji:"🛒", cor:"#4de3a0"},
   {titulo:"Quiz da Amazônia", alunos:["João Victor","Larissa Gomes","Davi Rocha"], turma:"8º B", categoria:"Jogo",
-   descricao:"Teste seus conhecimentos sobre a floresta e seus animais.", url:"https://exemplo.com/quiz", emoji:"🌳", cor:"#19c37d"},
+   descricao:"Teste seus conhecimentos sobre a floresta e seus animais.", url:"", emoji:"🌳", cor:"#19c37d"},
   {titulo:"Banda do Bairro", alunos:["Sofia Martins"], turma:"1º Ano EM", categoria:"Site pessoal",
-   descricao:"Página de uma banda local com músicas, fotos e agenda de shows.", url:"https://exemplo.com/banda", emoji:"🎸", cor:"#b6ff3b"},
+   descricao:"Página de uma banda local com músicas, fotos e agenda de shows.", url:"", emoji:"🎸", cor:"#b6ff3b"},
   {titulo:"Calculadora de Notas", alunos:["Lucas Ferreira","Beatriz Alves"], turma:"1º Ano EM", categoria:"Ferramenta",
-   descricao:"Descubra quanto falta para passar de ano em cada matéria.", url:"https://exemplo.com/notas", emoji:"🧮", cor:"#7dffd0"},
+   descricao:"Descubra quanto falta para passar de ano em cada matéria.", url:"", emoji:"🧮", cor:"#7dffd0"},
   {titulo:"Jogo da Memória", alunos:["Rafael Costa"], turma:"8º B", categoria:"Jogo",
    descricao:"Encontre os pares de símbolos de programação o mais rápido que puder.", url:"", emoji:"🧠", cor:"#e4ff6b"}
 ];
@@ -194,7 +194,7 @@ $("#grid").innerHTML = PROJETOS.map(p => `
 
 const cats = ["Todos", ...new Set(PROJETOS.map(p => p.categoria))];
 $("#tabs").innerHTML = cats.map((c,i) => `<button class="tab" type="button" aria-pressed="${i===0}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
-$("#nProj").textContent = PROJETOS.length;
+$("#nProj").textContent = PROJETOS.filter(p => p.url && !p.url.includes("exemplo.com")).length;
 $("#nAlu").textContent = new Set(PROJETOS.flatMap(p => p.alunos)).size;
 $("#nCat").textContent = cats.length - 1;
 
