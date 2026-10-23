@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Feira de Informática · Sites dos alunos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f6f5ff; --surface:#ffffff; --ink:#1c1b3a; --muted:#5d5c7e; --line:#dcdaf5;
+  --violet:#5b3df5; --on-violet:#ffffff; --sun:#ffd84d; --mint:#14b894;
+  --shadow:0 6px 0 rgba(28,27,58,.9);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#15142b; --surface:#201f3d; --ink:#f1f0ff; --muted:#a9a8cf; --line:#38366a;
+    --violet:#8a74ff; --on-violet:#15142b; --shadow:0 6px 0 rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#15142b; --surface:#201f3d; --ink:#f1f0ff; --muted:#a9a8cf; --line:#38366a;
+  --violet:#8a74ff; --on-violet:#15142b; --shadow:0 6px 0 rgba(0,0,0,.6);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* Hero */
+.hero{padding:36px 0 28px}
+.hero h1{font-size:clamp(2.1rem,9vw,4rem);font-weight:800;letter-spacing:-.02em;max-width:14ch}
+.hero p{max-width:46ch;color:var(--muted);margin:14px 0 0;font-size:1.05rem}
+.win{margin-top:26px;background:var(--surface);border:2px solid var(--ink);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;max-width:520px}
+.win .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:2px solid var(--ink);background:var(--sun)}
+.win .bar i{width:10px;height:10px;border-radius:50%;border:2px solid #1c1b3a;background:#fff}
+.win .bar span{margin-left:8px;flex:1;background:#fff;color:#1c1b3a;border:2px solid #1c1b3a;border-radius:99px;padding:1px 12px;font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.win .body{display:flex;gap:22px;padding:16px 18px;flex-wrap:wrap}
+.stat b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.9rem;display:block;line-height:1}
+.stat small{color:var(--muted)}
+
+/* Filtros */
+.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:12px 0;border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 20px;scrollbar-width:none;max-width:1040px;margin:0 auto}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font:inherit;font-weight:500;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:99px;padding:8px 16px;cursor:pointer;min-height:44px}
+.chip[aria-pressed="true"]{background:var(--violet);color:var(--on-violet);border-color:var(--violet)}
+.chip:focus-visible,.btn:focus-visible,.theme:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+
+/* Cards */
+.grid{display:grid;grid-template-columns:1fr;gap:26px;padding:26px 0 40px}
+@media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--surface);border:2px solid var(--ink);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.card[hidden]{display:none}
+.card .bar{display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:2px solid var(--ink);background:var(--bg)}
+.card .bar i{width:8px;height:8px;border-radius:50%;background:var(--line);border:1.5px solid var(--ink)}
+.card .bar span{margin-left:6px;font-size:.75rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thumb{height:130px;display:grid;place-items:center;font-size:3.4rem}
+.card .info{padding:16px 16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.tag{align-self:flex-start;font-size:.8rem;font-weight:700;background:var(--sun);color:#1c1b3a;border-radius:6px;padding:2px 9px}
+.card h3{font-size:1.3rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.who{font-size:.9rem;font-weight:500}
+.btn{margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:48px;background:var(--violet);color:var(--on-violet);font-weight:700;text-decoration:none;border-radius:10px;border:2px solid var(--ink);padding:10px 16px}
+.btn:active{transform:translateY(2px)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 30px;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.theme{font:inherit;background:var(--surface);color:var(--ink);border:2px solid var(--line);border-radius:99px;padding:8px 14px;cursor:pointer;min-height:44px}
+.empty{padding:30px 0;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:active{transform:none}}
+</style>
+</head>
+<body>
+
+<header class="wrap hero">
+  <h1>Sites feitos pelos nossos alunos</h1>
+  <p>Toque em um projeto para abrir o site no seu celular. Cada card mostra quem criou e o que o site faz.</p>
+  <div class="win" aria-hidden="true">
+    <div class="bar"><i></i><i></i><i></i><span>feira-de-informatica.escola</span></div>
+    <div class="body">
+      <div class="stat"><b id="nProj">0</b><small>projetos</small></div>
+      <div class="stat"><b id="nAlu">0</b><small>alunos</small></div>
+      <div class="stat"><b id="nCat">0</b><small>categorias</small></div>
+    </div>
+  </div>
+</header>
+
+<nav class="filters" aria-label="Filtrar por categoria"><div class="chips" id="chips"></div></nav>
+
+<main class="wrap">
+  <section class="grid" id="grid" aria-live="polite"></section>
+  <p class="empty" id="empty" hidden>Nenhum projeto nesta categoria ainda.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Feira de Ciências · Informática</span>
+    <button class="theme" id="theme" type="button">Mudar tema</button>
+  </div>
+</footer>
+
+<script>
+/* ============ EDITE AQUI: um bloco por projeto ============
+   titulo, alunos (lista), turma, categoria, descricao, url, emoji, cor (fundo do card)
+   Deixe url vazio ("") para mostrar "Em breve". */
+const PROJETOS = [
+  {titulo:"Loja da Cantina", alunos:["Ana Souza","Pedro Lima"], turma:"9º A", categoria:"Loja virtual",
+   descricao:"Cardápio digital da cantina com preços e pedido pelo WhatsApp.", url:"https://exemplo.com/cantina", emoji:"🛒", cor:"#ffd84d"},
+  {titulo:"Diário de Estudos", alunos:["Maria Clara"], turma:"9º A", categoria:"Ferramenta",
+   descricao:"Organize tarefas e provas da semana em uma agenda simples.", url:"https://exemplo.com/diario", emoji:"📓", cor:"#b9f2e3"},
+  {titulo:"Quiz da Amazônia", alunos:["João Victor","Larissa Gomes","Davi Rocha"], turma:"8º B", categoria:"Jogo",
+   descricao:"Teste seus conhecimentos sobre a floresta e seus animais.", url:"https://exemplo.com/quiz", emoji:"🌳", cor:"#c9f29b"},
+  {titulo:"Banda do Bairro", alunos:["Sofia Martins"], turma:"1º Ano EM", categoria:"Site pessoal",
+   descricao:"Página de uma banda local com músicas, fotos e agenda de shows.", url:"https://exemplo.com/banda", emoji:"🎸", cor:"#ffc4d6"},
+  {titulo:"Calculadora de Notas", alunos:["Lucas Ferreira","Beatriz Alves"], turma:"1º Ano EM", categoria:"Ferramenta",
+   descricao:"Descubra quanto falta para passar de ano em cada matéria.", url:"https://exemplo.com/notas", emoji:"🧮", cor:"#cfd6ff"},
+  {titulo:"Jogo da Memória", alunos:["Rafael Costa"], turma:"8º B", categoria:"Jogo",
+   descricao:"Encontre os pares de símbolos de programação o mais rápido que puder.", url:"", emoji:"🧠", cor:"#ffe3b0"}
+];
+/* ========================================================== */
+
+const $ = s => document.querySelector(s);
+const grid = $("#grid"), chips = $("#chips");
+const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const host = u => { try { return new URL(u).host; } catch(e){ return "em breve"; } };
+
+grid.innerHTML = PROJETOS.map(p => `
+  <article class="card" data-cat="${esc(p.categoria)}">
+    <div class="bar"><i></i><i></i><i></i><span>${esc(p.url ? host(p.url) : "em breve")}</span></div>
+    <div class="thumb" style="background:${esc(p.cor)}" aria-hidden="true">${p.emoji}</div>
+    <div class="info">
+      <span class="tag">${esc(p.categoria)}</span>
+      <h3>${esc(p.titulo)}</h3>
+      <p>${esc(p.descricao)}</p>
+      <div class="who">${esc(p.alunos.join(", "))} · ${esc(p.turma)}</div>
+      ${p.url
+        ? `<a class="btn" href="${esc(p.url)}" target="_blank" rel="noopener">Abrir site</a>`
+        : `<span class="btn" style="opacity:.55">Em breve</span>`}
+    </div>
+  </article>`).join("");
+
+const cats = ["Todos", ...new Set(PROJETOS.map(p => p.categoria))];
+chips.innerHTML = cats.map((c,i) => `<button class="chip" type="button" aria-pressed="${i===0}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+
+$("#nProj").textContent = PROJETOS.length;
+$("#nAlu").textContent = new Set(PROJETOS.flatMap(p => p.alunos)).size;
+$("#nCat").textContent = cats.length - 1;
+
+chips.addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if(!b) return;
+  chips.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x===b));
+  let n = 0;
+  grid.querySelectorAll(".card").forEach(c => {
+    const show = b.dataset.c === "Todos" || c.dataset.cat === b.dataset.c;
+    c.hidden = !show; if(show) n++;
+  });
+  $("#empty").hidden = n > 0;
+});
+
+$("#theme").addEventListener("click", () => {
+  const r = document.documentElement;
+  const dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  r.dataset.theme = dark ? "light" : "dark";
+});
+</script>
+</body>
+</html>
