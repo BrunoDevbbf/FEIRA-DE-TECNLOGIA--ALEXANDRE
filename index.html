@@ -3,164 +3,206 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Feira de Informática · Sites dos alunos</title>
+<title>Feira de Informática · E. E. Alexandre de Gusmão</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
-  --bg:#f6f5ff; --surface:#ffffff; --ink:#1c1b3a; --muted:#5d5c7e; --line:#dcdaf5;
-  --violet:#5b3df5; --on-violet:#ffffff; --sun:#ffd84d; --mint:#14b894;
-  --shadow:0 6px 0 rgba(28,27,58,.9);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    color-scheme:dark;
-    --bg:#15142b; --surface:#201f3d; --ink:#f1f0ff; --muted:#a9a8cf; --line:#38366a;
-    --violet:#8a74ff; --on-violet:#15142b; --shadow:0 6px 0 rgba(0,0,0,.6);
-  }
-}
-:root[data-theme="dark"]{
   color-scheme:dark;
-  --bg:#15142b; --surface:#201f3d; --ink:#f1f0ff; --muted:#a9a8cf; --line:#38366a;
-  --violet:#8a74ff; --on-violet:#15142b; --shadow:0 6px 0 rgba(0,0,0,.6);
+  --bg:#040806; --bg2:#09120d; --card:#0c1711; --ink:#eafff2; --muted:#8fb6a0; --line:#1b3a28;
+  --cyan:#2dff8a; --pink:#b6ff3b; --on-accent:#03140a; --grid:rgba(45,255,138,.06); --glow:rgba(45,255,138,.15);
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#eefaf3; --bg2:#dcf3e5; --card:#ffffff; --ink:#06190f; --muted:#3d6150; --line:#b3dac3;
+  --cyan:#0a8a4a; --pink:#3f7f00; --on-accent:#ffffff; --grid:rgba(10,138,74,.08); --glow:rgba(10,138,74,.12);
 }
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55}
-h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.1;margin:0}
-a{color:inherit}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+body{margin:0;color:var(--ink);font-family:"Sora",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55;
+  background:
+    radial-gradient(60rem 28rem at 85% -5%,var(--glow),transparent 70%),
+    linear-gradient(var(--grid) 1px,transparent 1px) 0 0/36px 36px,
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/36px 36px,
+    var(--bg);
+  background-attachment:fixed}
+h1,h2,h3{margin:0;line-height:1.1}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* Topo */
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.95rem}
+.logo{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-weight:800;color:var(--on-accent);background:linear-gradient(135deg,var(--cyan),var(--pink))}
+.theme{font:inherit;font-size:.85rem;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:99px;padding:8px 14px;cursor:pointer;min-height:44px}
 
 /* Hero */
-.hero{padding:36px 0 28px}
-.hero h1{font-size:clamp(2.1rem,9vw,4rem);font-weight:800;letter-spacing:-.02em;max-width:14ch}
-.hero p{max-width:46ch;color:var(--muted);margin:14px 0 0;font-size:1.05rem}
-.win{margin-top:26px;background:var(--surface);border:2px solid var(--ink);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;max-width:520px}
-.win .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:2px solid var(--ink);background:var(--sun)}
-.win .bar i{width:10px;height:10px;border-radius:50%;border:2px solid #1c1b3a;background:#fff}
-.win .bar span{margin-left:8px;flex:1;background:#fff;color:#1c1b3a;border:2px solid #1c1b3a;border-radius:99px;padding:1px 12px;font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.win .body{display:flex;gap:22px;padding:16px 18px;flex-wrap:wrap}
-.stat b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.9rem;display:block;line-height:1}
-.stat small{color:var(--muted)}
+.hero{padding:22px 0 30px}
+.url{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--cyan);border:1px solid var(--line);background:var(--bg2);border-radius:99px;padding:6px 14px;max-width:100%}
+.dot{width:8px;height:8px;border-radius:50%;background:#2de27a;box-shadow:0 0 0 4px rgba(45,226,122,.2);flex:none}
+.url span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hero h1{font-size:clamp(2.4rem,10.5vw,5rem);font-weight:800;letter-spacing:-.03em;margin-top:18px}
+.hero h1 em{font-style:normal;display:block;position:relative}
+.hero h1 em .ghost{opacity:0}
+.hero h1 em .typed{position:absolute;left:0;top:0;width:100%;background:linear-gradient(90deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tc::after{content:"|";font-weight:400;margin-left:2px;animation:blink .9s steps(2) infinite}
+.hero p{max-width:50ch;color:var(--muted);margin:16px 0 0}
+.stats{display:flex;gap:26px;margin-top:24px;flex-wrap:wrap}
+.stats b{display:block;font-size:1.7rem;line-height:1}
+.stats small{color:var(--muted);font-size:.8rem}
+.cursor::after{content:"_";animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
 
-/* Filtros */
-.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:12px 0;border-bottom:1px solid var(--line)}
-.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 20px;scrollbar-width:none;max-width:1040px;margin:0 auto}
-.chips::-webkit-scrollbar{display:none}
-.chip{flex:none;font:inherit;font-weight:500;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:99px;padding:8px 16px;cursor:pointer;min-height:44px}
-.chip[aria-pressed="true"]{background:var(--violet);color:var(--on-violet);border-color:var(--violet)}
-.chip:focus-visible,.btn:focus-visible,.theme:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+/* Abas */
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.tabs div{display:flex;gap:6px;overflow-x:auto;padding:10px 20px 0;max-width:1080px;margin:0 auto;scrollbar-width:none}
+.tabs div::-webkit-scrollbar{display:none}
+.tab{flex:none;font:inherit;font-size:.85rem;color:var(--muted);background:transparent;border:1px solid transparent;border-bottom:0;border-radius:10px 10px 0 0;padding:10px 16px;cursor:pointer;min-height:44px}
+.tab[aria-pressed="true"]{color:var(--ink);background:var(--card);border-color:var(--line);box-shadow:inset 0 2px 0 var(--cyan)}
+.tab:focus-visible,.visit:focus-visible,.theme:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
 
 /* Cards */
-.grid{display:grid;grid-template-columns:1fr;gap:26px;padding:26px 0 40px}
-@media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:960px){.grid{grid-template-columns:repeat(3,1fr)}}
-.card{background:var(--surface);border:2px solid var(--ink);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.grid{display:grid;grid-template-columns:1fr;gap:20px;padding:24px 0 40px}
+@media(min-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--cyan);transform:translateY(-3px)}
 .card[hidden]{display:none}
-.card .bar{display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:2px solid var(--ink);background:var(--bg)}
-.card .bar i{width:8px;height:8px;border-radius:50%;background:var(--line);border:1.5px solid var(--ink)}
-.card .bar span{margin-left:6px;font-size:.75rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.thumb{height:130px;display:grid;place-items:center;font-size:3.4rem}
-.card .info{padding:16px 16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
-.tag{align-self:flex-start;font-size:.8rem;font-weight:700;background:var(--sun);color:#1c1b3a;border-radius:6px;padding:2px 9px}
-.card h3{font-size:1.3rem}
-.card p{margin:0;color:var(--muted);font-size:.95rem}
-.who{font-size:.9rem;font-weight:500}
-.btn{margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:48px;background:var(--violet);color:var(--on-violet);font-weight:700;text-decoration:none;border-radius:10px;border:2px solid var(--ink);padding:10px 16px}
-.btn:active{transform:translateY(2px)}
-
-footer{border-top:1px solid var(--line);padding:22px 0 30px;color:var(--muted);font-size:.9rem}
-footer .wrap{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
-.theme{font:inherit;background:var(--surface);color:var(--ink);border:2px solid var(--line);border-radius:99px;padding:8px 14px;cursor:pointer;min-height:44px}
-.empty{padding:30px 0;color:var(--muted)}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:active{transform:none}}
+.chrome{display:flex;align-items:center;gap:6px;padding:9px 12px;background:var(--bg2);border-bottom:1px solid var(--line)}
+.chrome i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.chrome i:first-child{background:var(--pink)}
+.chrome span{margin-left:8px;flex:1;font-size:.72rem;color:var(--muted);background:var(--bg);border-radius:99px;padding:2px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cover{height:110px;display:grid;place-items:center;font-size:3rem;position:relative}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,var(--card))}
+.body{padding:4px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.cat{align-self:flex-start;font-size:.75rem;color:var(--cyan);border:1px solid var(--cyan);border-radius:6px;padding:1px 8px}
+.card h3{font-size:1.3rem;font-weight:700}
+.card p{margin:0;color:var(--muted);font-size:.92rem}
+.by{border-top:1px dashed var(--line);padding-top:12px}
+.by small{display:block;color:var(--muted);font-size:.78rem;margin-bottom:8px}
+.people{display:flex;flex-direction:column;gap:7px}
+.person{display:flex;align-items:center;gap:10px;font-weight:500;font-size:.95rem}
+.av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:800;color:#03140a;flex:none}
+.turma{color:var(--muted);font-size:.8rem}
+.visit{margin-top:auto;display:flex;justify-content:center;align-items:center;min-height:48px;border-radius:10px;font-weight:700;text-decoration:none;color:var(--on-accent);background:linear-gradient(90deg,var(--cyan),var(--pink));padding:10px 16px}
+.visit.off{background:var(--bg2);color:var(--muted);border:1px solid var(--line)}
+.empty{color:var(--muted);padding:24px 0}
+footer{border-top:1px solid var(--line);padding:22px 0 32px;color:var(--muted);font-size:.85rem}
+@media(prefers-reduced-motion:reduce){.tc::after{animation:none}.card{transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
-<header class="wrap hero">
-  <h1>Sites feitos pelos nossos alunos</h1>
-  <p>Toque em um projeto para abrir o site no seu celular. Cada card mostra quem criou e o que o site faz.</p>
-  <div class="win" aria-hidden="true">
-    <div class="bar"><i></i><i></i><i></i><span>feira-de-informatica.escola</span></div>
-    <div class="body">
-      <div class="stat"><b id="nProj">0</b><small>projetos</small></div>
-      <div class="stat"><b id="nAlu">0</b><small>alunos</small></div>
-      <div class="stat"><b id="nCat">0</b><small>categorias</small></div>
-    </div>
+<div class="wrap">
+  <div class="top">
+    <div class="brand"><div class="logo" aria-hidden="true">AG</div><span>E. E. Alexandre de Gusmão</span></div>
+    <button class="theme" id="theme" type="button">Tema claro</button>
   </div>
-</header>
 
-<nav class="filters" aria-label="Filtrar por categoria"><div class="chips" id="chips"></div></nav>
+  <header class="hero">
+    <div class="url mono"><i class="dot"></i><span>feira-de-informatica / sites-dos-alunos</span></div>
+    <h1>Escola Alexandre de Gusmão<em><span class="ghost">Feira de Informática</span><span class="typed tc" id="typed" aria-hidden="true"></span></em></h1>
+    <p>Sites criados pelos nossos alunos. Toque em um projeto para visitar.</p>
+    <div class="stats">
+      <div><b id="nProj">0</b><small>sites no ar</small></div>
+      <div><b id="nAlu">0</b><small>alunos criadores</small></div>
+      <div><b id="nCat">0</b><small>categorias</small></div>
+    </div>
+  </header>
+</div>
+
+<nav class="tabs" aria-label="Filtrar por categoria"><div id="tabs" class="mono"></div></nav>
 
 <main class="wrap">
   <section class="grid" id="grid" aria-live="polite"></section>
   <p class="empty" id="empty" hidden>Nenhum projeto nesta categoria ainda.</p>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>Feira de Ciências · Informática</span>
-    <button class="theme" id="theme" type="button">Mudar tema</button>
-  </div>
-</footer>
+<footer><div class="wrap">Feira de Ciências · Informática · Escola Alexandre de Gusmão</div></footer>
 
 <script>
 /* ============ EDITE AQUI: um bloco por projeto ============
-   titulo, alunos (lista), turma, categoria, descricao, url, emoji, cor (fundo do card)
+   titulo, alunos (todos que fizeram o site), turma, categoria, descricao, url, emoji, cor
    Deixe url vazio ("") para mostrar "Em breve". */
 const PROJETOS = [
   {titulo:"Loja da Cantina", alunos:["Ana Souza","Pedro Lima"], turma:"9º A", categoria:"Loja virtual",
-   descricao:"Cardápio digital da cantina com preços e pedido pelo WhatsApp.", url:"https://exemplo.com/cantina", emoji:"🛒", cor:"#ffd84d"},
+   descricao:"Cardápio digital da cantina com preços e pedido pelo WhatsApp.", url:"https://exemplo.com/cantina", emoji:"🛒", cor:"#2dff8a"},
   {titulo:"Diário de Estudos", alunos:["Maria Clara"], turma:"9º A", categoria:"Ferramenta",
-   descricao:"Organize tarefas e provas da semana em uma agenda simples.", url:"https://exemplo.com/diario", emoji:"📓", cor:"#b9f2e3"},
+   descricao:"Organize tarefas e provas da semana em uma agenda simples.", url:"https://exemplo.com/diario", emoji:"📓", cor:"#4de3a0"},
   {titulo:"Quiz da Amazônia", alunos:["João Victor","Larissa Gomes","Davi Rocha"], turma:"8º B", categoria:"Jogo",
-   descricao:"Teste seus conhecimentos sobre a floresta e seus animais.", url:"https://exemplo.com/quiz", emoji:"🌳", cor:"#c9f29b"},
+   descricao:"Teste seus conhecimentos sobre a floresta e seus animais.", url:"https://exemplo.com/quiz", emoji:"🌳", cor:"#19c37d"},
   {titulo:"Banda do Bairro", alunos:["Sofia Martins"], turma:"1º Ano EM", categoria:"Site pessoal",
-   descricao:"Página de uma banda local com músicas, fotos e agenda de shows.", url:"https://exemplo.com/banda", emoji:"🎸", cor:"#ffc4d6"},
+   descricao:"Página de uma banda local com músicas, fotos e agenda de shows.", url:"https://exemplo.com/banda", emoji:"🎸", cor:"#b6ff3b"},
   {titulo:"Calculadora de Notas", alunos:["Lucas Ferreira","Beatriz Alves"], turma:"1º Ano EM", categoria:"Ferramenta",
-   descricao:"Descubra quanto falta para passar de ano em cada matéria.", url:"https://exemplo.com/notas", emoji:"🧮", cor:"#cfd6ff"},
+   descricao:"Descubra quanto falta para passar de ano em cada matéria.", url:"https://exemplo.com/notas", emoji:"🧮", cor:"#7dffd0"},
   {titulo:"Jogo da Memória", alunos:["Rafael Costa"], turma:"8º B", categoria:"Jogo",
-   descricao:"Encontre os pares de símbolos de programação o mais rápido que puder.", url:"", emoji:"🧠", cor:"#ffe3b0"}
+   descricao:"Encontre os pares de símbolos de programação o mais rápido que puder.", url:"", emoji:"🧠", cor:"#e4ff6b"}
 ];
 /* ========================================================== */
 
 const $ = s => document.querySelector(s);
-const grid = $("#grid"), chips = $("#chips");
-const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const host = u => { try { return new URL(u).host; } catch(e){ return "em breve"; } };
 
-grid.innerHTML = PROJETOS.map(p => `
+/* Efeito de digitação em ciclo. Edite as frases e os tempos (em milissegundos) aqui. */
+const FRASES = ["Feira de Informática", "Sites dos alunos", "Tecnologia na escola", "Ideias que viram código"];
+const PAUSA_LEITURA = 2800;  /* tempo com a frase completa na tela */
+const PAUSA_TROCA = 900;     /* tempo com a tela vazia antes da próxima frase */
+(function(){
+  const el = $("#typed"), ghost = document.querySelector(".ghost");
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { el.textContent = FRASES[0]; return; }
+  ghost.textContent = FRASES.reduce((a, b) => b.length > a.length ? b : a);
+  let f = 0, i = 0, apagando = false;
+  const tick = () => {
+    const t = FRASES[f];
+    if (!apagando) {
+      el.textContent = t.slice(0, ++i);
+      if (i === t.length) { apagando = true; return setTimeout(tick, PAUSA_LEITURA); }
+      return setTimeout(tick, 70 + Math.random() * 90);
+    }
+    el.textContent = t.slice(0, --i);
+    if (i === 0) { apagando = false; f = (f + 1) % FRASES.length; return setTimeout(tick, PAUSA_TROCA); }
+    setTimeout(tick, 35);
+  };
+  setTimeout(tick, 600);
+})();
+const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const host = u => { try { return new URL(u).host; } catch(e){ return "em-breve"; } };
+const cores = ["#2dff8a","#b6ff3b","#19c37d","#7dffd0","#e4ff6b","#4de3a0"];
+const ini = n => n.trim().split(/\s+/).map((w,i,a) => (i===0||i===a.length-1) ? w[0] : "").join("").toUpperCase();
+const corDe = n => cores[[...n].reduce((a,c) => a + c.charCodeAt(0), 0) % cores.length];
+
+$("#grid").innerHTML = PROJETOS.map(p => `
   <article class="card" data-cat="${esc(p.categoria)}">
-    <div class="bar"><i></i><i></i><i></i><span>${esc(p.url ? host(p.url) : "em breve")}</span></div>
-    <div class="thumb" style="background:${esc(p.cor)}" aria-hidden="true">${p.emoji}</div>
-    <div class="info">
-      <span class="tag">${esc(p.categoria)}</span>
+    <div class="chrome"><i></i><i></i><i></i><span class="mono">${esc(p.url ? host(p.url) : "em-breve")}</span></div>
+    <div class="cover" style="background:linear-gradient(135deg,${esc(p.cor)}55,transparent)" aria-hidden="true">${p.emoji}</div>
+    <div class="body">
+      <span class="cat mono">${esc(p.categoria)}</span>
       <h3>${esc(p.titulo)}</h3>
       <p>${esc(p.descricao)}</p>
-      <div class="who">${esc(p.alunos.join(", "))} · ${esc(p.turma)}</div>
+      <div class="by">
+        <small>Feito por · ${esc(p.turma)}</small>
+        <div class="people">${p.alunos.map(a => `<div class="person"><span class="av" style="background:${corDe(a)}">${esc(ini(a))}</span>${esc(a)}</div>`).join("")}</div>
+      </div>
       ${p.url
-        ? `<a class="btn" href="${esc(p.url)}" target="_blank" rel="noopener">Abrir site</a>`
-        : `<span class="btn" style="opacity:.55">Em breve</span>`}
+        ? `<a class="visit" href="${esc(p.url)}" target="_blank" rel="noopener">Visitar site</a>`
+        : `<span class="visit off">Em breve</span>`}
     </div>
   </article>`).join("");
 
 const cats = ["Todos", ...new Set(PROJETOS.map(p => p.categoria))];
-chips.innerHTML = cats.map((c,i) => `<button class="chip" type="button" aria-pressed="${i===0}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
-
+$("#tabs").innerHTML = cats.map((c,i) => `<button class="tab" type="button" aria-pressed="${i===0}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
 $("#nProj").textContent = PROJETOS.length;
 $("#nAlu").textContent = new Set(PROJETOS.flatMap(p => p.alunos)).size;
 $("#nCat").textContent = cats.length - 1;
 
-chips.addEventListener("click", e => {
-  const b = e.target.closest(".chip"); if(!b) return;
-  chips.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x===b));
+$("#tabs").addEventListener("click", e => {
+  const b = e.target.closest(".tab"); if(!b) return;
+  document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-pressed", x===b));
   let n = 0;
-  grid.querySelectorAll(".card").forEach(c => {
+  document.querySelectorAll(".card").forEach(c => {
     const show = b.dataset.c === "Todos" || c.dataset.cat === b.dataset.c;
     c.hidden = !show; if(show) n++;
   });
@@ -168,9 +210,9 @@ chips.addEventListener("click", e => {
 });
 
 $("#theme").addEventListener("click", () => {
-  const r = document.documentElement;
-  const dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-  r.dataset.theme = dark ? "light" : "dark";
+  const r = document.documentElement, light = r.dataset.theme === "light";
+  r.dataset.theme = light ? "dark" : "light";
+  $("#theme").textContent = light ? "Tema claro" : "Tema escuro";
 });
 </script>
 </body>
